@@ -1,0 +1,6 @@
+[submodule "htdocs/content/mu-plugins/framework"]
+	path = htdocs/content/mu-plugins/framework
+	url = C:/Development/themosis/framework
+[submodule "htdocs/content/themes/theme"]
+    path = htdocs/content/themes/theme
+    url = C:/Development/themes/theme
