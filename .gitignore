@@ -12,8 +12,8 @@ composer.lock
 ### Wordpress
 /htdocs/cms/*
 !/htdocs/cms/.gitkeep
-/htdocs/content/mu-plugins/themosis-framework/
-/htdocs/content/themes/themosis-theme/
+/htdocs/content/mu-plugins/framework/
+/htdocs/content/themes/theme1/
 /htdocs/content/uploads/
 /htdocs/content/upgrade/
 
