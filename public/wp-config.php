@@ -36,6 +36,12 @@ define('THEMOSIS_ERROR_DISPLAY', env('ERROR_DISPLAY', false));
 define('THEMOSIS_ERROR_SHUTDOWN', env('ERROR_SHUTDOWN', false));
 define('THEMOSIS_ERROR_REPORT', env('ERROR_REPORT', 0));
 
+/*----------------------------------------------------*/
+// Content directory
+/*----------------------------------------------------*/
+define('CONTENT_DIR', 'content');
+define('WP_CONTENT_DIR', $webRootPath . DS . CONTENT_DIR);
+define('WP_CONTENT_URL', WP_HOME . '/' . CONTENT_DIR);
 
 /*----------------------------------------------------*/
 // Authentication unique keys and salts

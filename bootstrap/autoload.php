@@ -61,13 +61,6 @@ if (file_exists($config = $rootPath . '/config/environments/' . $environment . '
 }
 
 /*----------------------------------------------------*/
-// Content directory
-/*----------------------------------------------------*/
-define('CONTENT_DIR', 'content');
-define('WP_CONTENT_DIR', $webRootPath . DS . CONTENT_DIR);
-define('WP_CONTENT_URL', WP_HOME . '/' . CONTENT_DIR);
-
-/*----------------------------------------------------*/
 // Include shared configuration
 /*----------------------------------------------------*/
 if (file_exists($shared = $rootPath . DS . 'config' . DS . 'shared.php'))
