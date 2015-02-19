@@ -3,7 +3,7 @@
 // Paths
 /*----------------------------------------------------*/
 $rootPath    = dirname(__DIR__);
-$webRootPath = $rootPath . DS . 'htdocs';
+$webRootPath = $rootPath . DS . 'public';
 
 /*----------------------------------------------------*/
 // Include composer autoloading

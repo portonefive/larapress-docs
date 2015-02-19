@@ -38,7 +38,7 @@
     },
     "require": {
         "php": ">=5.4",
-        "johnpbloch/wordpress": "4.1",
+        "johnpbloch/wordpress": ">=4.1",
         "themosis/framework": "dev-master",
         "themosis/theme": "dev-master",
         "raveren/kint": "0.9.*",
@@ -48,11 +48,11 @@
     },
     "extra": {
         "installer-paths": {
-            "htdocs/content/mu-plugins/{$name}/": ["themosis/framework"],
-            "htdocs/content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "htdocs/content/themes/{$name}/": ["themosis/theme"],
-            "htdocs/content/themes/{$name}/": ["type:wordpress-theme"]
+            "public/content/mu-plugins/{$name}/": ["themosis/framework"],
+            "public/content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "public/content/themes/{$name}/": ["themosis/theme"],
+            "public/content/themes/{$name}/": ["type:wordpress-theme"]
         },
-        "wordpress-install-dir": "htdocs/cms"
+        "wordpress-install-dir": "public/cms"
     }
 }

@@ -7,7 +7,7 @@
 /*----------------------------------------------------*/
 // Set the application instance.
 /*----------------------------------------------------*/
-$app = new Themosis\Core\Application();
+$app = new \Themosis\Core\Application();
 
 /*----------------------------------------------------*/
 // Set the application paths.

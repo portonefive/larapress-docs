@@ -10,12 +10,12 @@ composer.lock
 .idea/
 
 ### Wordpress
-/htdocs/cms/*
-!/htdocs/cms/.gitkeep
-/htdocs/content/mu-plugins/framework/
-/htdocs/content/themes/theme/
-/htdocs/content/uploads/
-/htdocs/content/upgrade/
+/public/cms/*
+!/public/cms/.gitkeep
+/public/content/mu-plugins/framework/
+/public/content/themes/theme/
+/public/content/uploads/
+/public/content/upgrade/
 
 
 ### Environment Credentials
