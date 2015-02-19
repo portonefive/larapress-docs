@@ -1,60 +1,58 @@
 {
-  "name": "themosis/themosis",
-  "description": "The Themosis framework. A framework for WordPress developers.",
-  "keywords": [
-    "themosis",
-    "framework",
-    "WordPress"
-  ],
-  "license": "GPL-2.0+",
-  "authors": [
-    {
-      "name": "Julien Lambé",
-      "email": "julien@themosis.com",
-      "homepage": "http://www.themosis.com/"
+    "name": "themosis/themosis",
+    "description": "The Themosis framework. A framework for WordPress developers.",
+    "keywords": [
+        "themosis",
+        "framework",
+        "WordPress"
+    ],
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Julien Lambé",
+            "email": "julien@themosis.com",
+            "homepage": "http://www.themosis.com/"
+        }
+    ],
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/portonefive/themosis"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/portonefive/theme"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/portonefive/framework"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist"
+    },
+    "require": {
+        "php": ">=5.4",
+        "johnpbloch/wordpress": "4.1",
+        "themosis/framework": "dev-master",
+        "themosis/theme": "dev-master",
+        "raveren/kint": "0.9.*",
+        "illuminate/support": "~5.0",
+        "illuminate/database": "~5.0",
+        "vlucas/phpdotenv": "~1.1"
+    },
+    "extra": {
+        "installer-paths": {
+            "htdocs/content/mu-plugins/{$name}/": ["themosis/framework"],
+            "htdocs/content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "htdocs/content/themes/{$name}/": ["themosis/theme"],
+            "htdocs/content/themes/{$name}/": ["type:wordpress-theme"]
+        },
+        "wordpress-install-dir": "htdocs/cms"
     }
-  ],
-  "type": "project",
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://wpackagist.org"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/portonefive/themosis"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/portonefive/theme"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/portonefive/framework"
-    }
-  ],
-  "autoload": {
-    "psr-0": {
-      "Thms": "library"
-    }
-  },
-  "config": {
-    "preferred-install": "dist"
-  },
-  "require": {
-    "php": ">=5.4",
-    "johnpbloch/wordpress": "4.1",
-    "themosis/framework": "dev-master",
-    "themosis/theme": "dev-master",
-    "raveren/kint": "0.9.*"
-  },
-  "extra": {
-    "installer-paths": {
-      "htdocs/content/mu-plugins/{$name}/": ["themosis/framework"],
-      "htdocs/content/plugins/{$name}/": ["type:wordpress-plugin"],
-      "htdocs/content/themes/{$name}/": ["themosis/theme"],
-      "htdocs/content/themes/{$name}/": ["type:wordpress-theme"]
-    },
-    "wordpress-install-dir": "htdocs/cms"
-  }
 }
