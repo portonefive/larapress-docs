@@ -44,7 +44,9 @@
         "raveren/kint": "0.9.*",
         "illuminate/support": "~5.0",
         "illuminate/database": "~5.0",
-        "vlucas/phpdotenv": "~1.1"
+        "vlucas/phpdotenv": "~1.1",
+        "illuminate/config": "~5.0",
+        "symfony/finder": "~2.6"
     },
     "extra": {
         "installer-paths": {

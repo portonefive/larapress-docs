@@ -70,4 +70,3 @@ define('DISALLOW_FILE_EDIT', true);
 require_once(ABSPATH . 'wp-settings.php');
 
 $themosis = require_once __DIR__ . '/../bootstrap/app.php';
-

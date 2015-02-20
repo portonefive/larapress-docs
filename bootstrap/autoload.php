@@ -8,7 +8,7 @@ $webRootPath = $rootPath . DS . 'public';
 /*----------------------------------------------------*/
 // Include composer autoloading
 /*----------------------------------------------------*/
-require __DIR__ . '/../vendor/autoload.php';
+$composer = require __DIR__ . '/../vendor/autoload.php';
 
 if ( ! function_exists('env'))
 {
@@ -53,25 +53,9 @@ Dotenv::load(dirname(__DIR__));
 $environment = env('ENV', 'production');
 
 /*----------------------------------------------------*/
-// Load environment config constants
-/*----------------------------------------------------*/
-if (file_exists($config = $rootPath . '/config/environments/' . $environment . '.php'))
-{
-    require_once($config);
-}
-
-/*----------------------------------------------------*/
-// Include shared configuration
-/*----------------------------------------------------*/
-if (file_exists($shared = $rootPath . DS . 'config' . DS . 'shared.php'))
-{
-    require_once($shared);
-}
-
-/*----------------------------------------------------*/
 // Path to WordPress
 /*----------------------------------------------------*/
 if ( ! defined('ABSPATH'))
 {
-    define('ABSPATH', $webRootPath . DS . 'cms' . DS);
+    define('ABSPATH', $webRootPath . '/cms/');
 }

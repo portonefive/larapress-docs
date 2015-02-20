@@ -4,6 +4,8 @@
  * Bootstrap Themosis framework.
  */
 
+$composer->addPsr4('App\\', get_template_directory() . '/app');
+
 /*----------------------------------------------------*/
 // Set the application instance.
 /*----------------------------------------------------*/
