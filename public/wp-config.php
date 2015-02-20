@@ -24,7 +24,7 @@ define('DB_TABLE_PREFIX', $table_prefix = env('DB_TABLE_PREFIX', 'wp_'));
 
 // WordPress URLs
 define('WP_HOME', env('WP_HOME'));
-define('WP_SITEURL', env('WP_SITE_URL'));
+define('WP_SITEURL', env('WP_HOME') . '/cms');
 
 // Development
 define('SAVEQUERIES', env('SAVE_QUERIES', false));

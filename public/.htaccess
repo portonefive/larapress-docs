@@ -2,9 +2,9 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.+)$ /cms/$1 [L]
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule (.+)$ /cms/$1 [L]
 
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
