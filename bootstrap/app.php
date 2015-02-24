@@ -120,7 +120,7 @@ add_filter(
     function ($sizes)
     {
 
-        $sizes['_larapress_media'] = __('LaraPress Media Thumbnail', THEMOSIS_FRAMEWORK_TEXTDOMAIN);
+        $sizes['_larapress_media'] = __('LaraPress Media Thumbnail', LARAPRESS_FRAMEWORK_TEXTDOMAIN);
 
         return $sizes;
     }

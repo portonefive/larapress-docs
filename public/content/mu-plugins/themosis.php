@@ -13,9 +13,9 @@ License: GPLv2
 // Framework textdomain.
 /*----------------------------------------------------*/
 
-if ( ! defined('THEMOSIS_FRAMEWORK_TEXTDOMAIN'))
+if ( ! defined('LARAPRESS_FRAMEWORK_TEXTDOMAIN'))
 {
-    define('THEMOSIS_FRAMEWORK_TEXTDOMAIN', 'larapress-framework');
+    define('LARAPRESS_FRAMEWORK_TEXTDOMAIN', 'larapress-framework');
 }
 
 /**

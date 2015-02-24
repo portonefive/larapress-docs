@@ -32,9 +32,9 @@ define('WP_DEBUG', env('DEBUG', false));
 define('SCRIPT_DEBUG', env('SCRIPT_DEBUG', false));
 
 // LaraPress framework
-define('THEMOSIS_ERROR_DISPLAY', env('ERROR_DISPLAY', false));
-define('THEMOSIS_ERROR_SHUTDOWN', env('ERROR_SHUTDOWN', false));
-define('THEMOSIS_ERROR_REPORT', env('ERROR_REPORT', 0));
+define('LARAPRESS_ERROR_DISPLAY', env('ERROR_DISPLAY', false));
+define('LARAPRESS_ERROR_SHUTDOWN', env('ERROR_SHUTDOWN', false));
+define('LARAPRESS_ERROR_REPORT', env('ERROR_REPORT', 0));
 
 /*----------------------------------------------------*/
 // Content directory
