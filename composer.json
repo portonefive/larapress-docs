@@ -1,8 +1,8 @@
 {
-    "name": "themosis/themosis",
-    "description": "The Themosis framework. A framework for WordPress developers.",
+    "name": "larapress/larapress",
+    "description": "The LaraPress framework. A framework for WordPress developers.",
     "keywords": [
-        "themosis",
+        "larapress",
         "framework",
         "WordPress"
     ],
@@ -10,8 +10,8 @@
     "authors": [
         {
             "name": "Julien Lambé",
-            "email": "julien@themosis.com",
-            "homepage": "http://www.themosis.com/"
+            "email": "julien@larapress.com",
+            "homepage": "http://www.larapress.com/"
         }
     ],
     "type": "project",
@@ -22,7 +22,7 @@
         },
         {
             "type": "vcs",
-            "url": "https://github.com/portonefive/themosis"
+            "url": "https://github.com/portonefive/larapress"
         },
         {
             "type": "vcs",
@@ -39,8 +39,8 @@
     "require": {
         "php": ">=5.4",
         "johnpbloch/wordpress": ">=4.1",
-        "themosis/framework": "dev-master",
-        "themosis/theme": "dev-master",
+        "larapress/framework": "dev-master",
+        "larapress/theme": "dev-master",
         "raveren/kint": "0.9.*",
         "illuminate/support": "~5.0",
         "illuminate/database": "~5.0",
@@ -50,9 +50,9 @@
     },
     "extra": {
         "installer-paths": {
-            "public/content/mu-plugins/{$name}/": ["themosis/framework"],
+            "public/content/mu-plugins/{$name}/": ["larapress/framework"],
             "public/content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "public/content/themes/{$name}/": ["themosis/theme"],
+            "public/content/themes/{$name}/": ["larapress/theme"],
             "public/content/themes/{$name}/": ["type:wordpress-theme"]
         },
         "wordpress-install-dir": "public/cms"

@@ -1,26 +1,54 @@
 <?php defined('DS') or die('No direct script access.');
 
 /**
- * Bootstrap Themosis framework.
+ * Bootstrap LaraPress framework.
  */
 
-$composer->addPsr4('App\\', get_template_directory() . '/app');
+require_once(ABSPATH . 'wp-settings.php');
+
+/**
+ * Define all framework paths
+ * These are real paths, not URLs to the framework files.
+ * These paths are extensible with the help of WordPress
+ * filters.
+ */
+// Framework paths.
+$paths = apply_filters('larapress_framework_paths', array());
+
+// Plugin base path.
+$paths['plugin'] = __DIR__ . DS;
+
+// Framework base path.
+$paths['sys'] = dirname(__DIR__) . '/vendor/larapress/framework/src';
+
+// Register globally the paths
+foreach ($paths as $name => $path)
+{
+    if ( ! isset($GLOBALS['larapress_paths'][$name]))
+    {
+        $GLOBALS['larapress_paths'][$name] = realpath($path) . DS;
+    }
+}
 
 /*----------------------------------------------------*/
 // Set the application instance.
 /*----------------------------------------------------*/
-$app = new \Themosis\Core\Application();
+$app = new \LaraPress\Core\Application();
+
+
+$composer->addPsr4('App\\', get_template_directory() . '/app');
 
 /*----------------------------------------------------*/
 // Set the application paths.
 /*----------------------------------------------------*/
 $paths = apply_filters(
-    'themosis_application_paths',
+    'larapress_application_paths',
     array(
         'plugin' => dirname(__DIR__),
-        'sys'    => dirname(__DIR__) . DS . 'vendor' . DS . 'themosis' . DS . 'src'
+        'sys'    => dirname(__DIR__) . '/vendor/larapress/src'
     )
 );
+
 
 $app->bindInstallPaths($paths);
 
@@ -32,9 +60,9 @@ $app->instance('app', $app);
 /*----------------------------------------------------*/
 // Load the facades.
 /*----------------------------------------------------*/
-Themosis\Facades\Facade::clearResolvedInstances();
+LaraPress\Facades\Facade::clearResolvedInstances();
 
-Themosis\Facades\Facade::setFacadeApplication($app);
+LaraPress\Facades\Facade::setFacadeApplication($app);
 
 /*----------------------------------------------------*/
 // Register Facade Aliases To Full Classes
@@ -44,24 +72,24 @@ $app->registerCoreContainerAliases();
 /*----------------------------------------------------*/
 // Register Core Igniter services
 /*----------------------------------------------------*/
-$app->registerCoreIgniters();
+$app->registerServiceProviders();
 
 /*----------------------------------------------------*/
 // Set application configurations.
 /*----------------------------------------------------*/
-do_action('themosis_configurations');
+do_action('larapress_configurations');
 
 /*----------------------------------------------------*/
 // Register framework view paths.
 /*----------------------------------------------------*/
 add_filter(
-    'themosisViewPaths',
+    'larapressViewPaths',
     function ($paths)
     {
-        $paths[] = themosis_path('sys') . 'Metabox' . DS . 'Views' . DS;
-        $paths[] = themosis_path('sys') . 'Page' . DS . 'Views' . DS;
-        $paths[] = themosis_path('sys') . 'Field' . DS . 'Fields' . DS . 'Views' . DS;
-        $paths[] = themosis_path('sys') . 'Route' . DS . 'Views' . DS;
+        $paths[] = larapress_path('sys') . 'Metabox/Views/';
+        $paths[] = larapress_path('sys') . 'Page/Views/';
+        $paths[] = larapress_path('sys') . 'Field/Fields/Views/';
+        $paths[] = larapress_path('sys') . 'Route/Views/';
 
         return $paths;
     }
@@ -71,12 +99,12 @@ add_filter(
 // Register framework asset paths.
 /*----------------------------------------------------*/
 add_filter(
-    'themosisAssetPaths',
+    'larapressAssetPaths',
     function ($paths)
     {
 
-        $coreUrl         = themosis_plugin_url(dirname(__DIR__)) . '/src/Themosis/_assets';
-        $paths[$coreUrl] = themosis_path('sys') . '_assets';
+        $coreUrl         = larapress_plugin_url(dirname(__DIR__)) . '/src/LaraPress/_assets';
+        $paths[$coreUrl] = larapress_path('sys') . '_assets';
 
         return $paths;
     }
@@ -85,14 +113,14 @@ add_filter(
 /*----------------------------------------------------*/
 // Register framework media image size.
 /*----------------------------------------------------*/
-add_image_size('_themosis_media', 100, 100, true);
+add_image_size('_larapress_media', 100, 100, true);
 
 add_filter(
     'image_size_names_choose',
     function ($sizes)
     {
 
-        $sizes['_themosis_media'] = __('Themosis Media Thumbnail', THEMOSIS_FRAMEWORK_TEXTDOMAIN);
+        $sizes['_larapress_media'] = __('LaraPress Media Thumbnail', THEMOSIS_FRAMEWORK_TEXTDOMAIN);
 
         return $sizes;
     }
@@ -106,11 +134,11 @@ add_action(
     'admin_head',
     function ()
     {
-        $datas = apply_filters('themosisAdminGlobalObject', array());
+        $datas = apply_filters('larapressAdminGlobalObject', array());
 
         $output = "<script type=\"text/javascript\">\n\r";
         $output .= "//<![CDATA[\n\r";
-        $output .= "var thfmk_themosis = {\n\r";
+        $output .= "var thfmk_larapress = {\n\r";
 
         if ( ! empty($datas))
         {
@@ -134,10 +162,10 @@ add_action(
 // admin global object.
 /*----------------------------------------------------*/
 add_filter(
-    'themosisAdminGlobalObject',
+    'larapressAdminGlobalObject',
     function ($paths)
     {
-        $paths['_themosisAssets'] = themosis_plugin_url(dirname(__DIR__)) . '/src/Themosis/_assets';
+        $paths['_larapressAssets'] = larapress_plugin_url(dirname(__DIR__)) . '/src/LaraPress/_assets';
 
         return $paths;
     }
@@ -146,13 +174,13 @@ add_filter(
 /*----------------------------------------------------*/
 // Enqueue frameworks assets.
 /*----------------------------------------------------*/
-// Themosis styles
-Themosis\Facades\Asset::add('themosis-core-styles', 'css/_themosis-core.css')->to('admin');
+// LaraPress styles
+LaraPress\Facades\Asset::add('larapress-core-styles', 'css/_larapress-core.css')->to('admin');
 
-// Themosis scripts
-Themosis\Facades\Asset::add(
-    'themosis-core-scripts',
-    'js/_themosis-core.js',
+// LaraPress scripts
+LaraPress\Facades\Asset::add(
+    'larapress-core-scripts',
+    'js/_larapress-core.js',
     array(
         'jquery',
         'jquery-ui-sortable',
@@ -167,6 +195,6 @@ Themosis\Facades\Asset::add(
 /*----------------------------------------------------*/
 // Bootstrap application.
 /*----------------------------------------------------*/
-do_action('themosis_bootstrap');
+do_action('larapress_bootstrap');
 
 return $app;

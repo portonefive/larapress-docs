@@ -13,7 +13,7 @@ composer.lock
 /public/cms/*
 !/public/cms/.gitkeep
 /public/content/mu-plugins/framework/
-/public/content/themes/theme/
+/public/content/themes/theme/*
 /public/content/uploads/
 /public/content/upgrade/
 

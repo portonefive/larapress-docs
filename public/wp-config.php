@@ -31,7 +31,7 @@ define('SAVEQUERIES', env('SAVE_QUERIES', false));
 define('WP_DEBUG', env('DEBUG', false));
 define('SCRIPT_DEBUG', env('SCRIPT_DEBUG', false));
 
-// Themosis framework
+// LaraPress framework
 define('THEMOSIS_ERROR_DISPLAY', env('ERROR_DISPLAY', false));
 define('THEMOSIS_ERROR_SHUTDOWN', env('ERROR_SHUTDOWN', false));
 define('THEMOSIS_ERROR_REPORT', env('ERROR_REPORT', 0));
@@ -67,6 +67,4 @@ define('DISALLOW_FILE_EDIT', true);
 /*----------------------------------------------------*/
 // Sets up WordPress vars and included files
 /*----------------------------------------------------*/
-require_once(ABSPATH . 'wp-settings.php');
-
-$themosis = require_once __DIR__ . '/../bootstrap/app.php';
+$larapress = require_once __DIR__ . '/../bootstrap/app.php';
