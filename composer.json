@@ -36,17 +36,15 @@
     "config": {
         "preferred-install": "dist"
     },
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4",
+        "raveren/kint": "0.9.*",
         "johnpbloch/wordpress": ">=4.1",
         "larapress/framework": "dev-master",
         "larapress/theme": "dev-master",
-        "raveren/kint": "0.9.*",
-        "illuminate/support": "~5.0",
-        "illuminate/database": "~5.0",
-        "vlucas/phpdotenv": "~1.1",
-        "illuminate/config": "~5.0",
-        "symfony/finder": "~2.6"
+        "illuminate/html": "5.*",
+        "laravel/framework": "5.1.*@dev"
     },
     "extra": {
         "installer-paths": {
