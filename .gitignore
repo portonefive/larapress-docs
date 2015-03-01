@@ -1,24 +1,13 @@
-### Miscellaneous
+.idea/
 .DS_Store
 Thumbs.db
 
 .env
-
-### Composer
 composer.lock
 /vendor/
 
-### IDE
-.idea/
-
-### Wordpress
 /public/cms/*
 !/public/cms/.gitkeep
 /public/content/mu-plugins/framework/
-/public/content/themes/theme/*
 /public/content/uploads/
 /public/content/upgrade/
-
-
-### Environment Credentials
-.env
