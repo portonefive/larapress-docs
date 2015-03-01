@@ -1,61 +1,36 @@
 <?php
-/*----------------------------------------------------*/
-// Paths
-/*----------------------------------------------------*/
-$rootPath    = dirname(__DIR__);
-$webRootPath = $rootPath . DS . 'public';
 
-/*----------------------------------------------------*/
-// Include composer autoloading
-/*----------------------------------------------------*/
+define('LARAVEL_START', microtime(true));
+
+/*
+|--------------------------------------------------------------------------
+| Register The Composer Auto Loader
+|--------------------------------------------------------------------------
+|
+| Composer provides a convenient, automatically generated class loader
+| for our application. We just need to utilize it! We'll require it
+| into the script here so that we do not have to worry about the
+| loading of any our classes "manually". Feels great to relax.
+|
+*/
+
 $composer = require __DIR__ . '/../vendor/autoload.php';
+$composer->addPsr4('App\\', __DIR__ . '/../app');
 
-if ( ! function_exists('env'))
+/*
+|--------------------------------------------------------------------------
+| Include The Compiled Class File
+|--------------------------------------------------------------------------
+|
+| To dramatically increase your application's performance, you may use a
+| compiled class file which contains all of the classes commonly used
+| by a request. The Artisan "optimize" is used to create this file.
+|
+*/
+
+$compiledPath = __DIR__ . '/../storage/framework/compiled.php';
+
+if (file_exists($compiledPath))
 {
-    /**
-     * Gets the value of an environment variable. Supports boolean, empty and null.
-     *
-     * @param  string  $key
-     * @param  mixed   $default
-     * @return mixed
-     */
-    function env($key, $default = null)
-    {
-        $value = getenv($key);
-
-        if ($value === false) return value($default);
-
-        switch (strtolower($value))
-        {
-            case 'true':
-            case '(true)':
-                return true;
-
-            case 'false':
-            case '(false)':
-                return false;
-
-            case 'null':
-            case '(null)':
-                return null;
-
-            case 'empty':
-            case '(empty)':
-                return '';
-        }
-
-        return $value;
-    }
-}
-
-Dotenv::load(dirname(__DIR__));
-
-$environment = env('ENV', 'production');
-
-/*----------------------------------------------------*/
-// Path to WordPress
-/*----------------------------------------------------*/
-if ( ! defined('ABSPATH'))
-{
-    define('ABSPATH', $webRootPath . '/cms/');
+    require $compiledPath;
 }

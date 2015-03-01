@@ -1,17 +1,18 @@
 {
-    "name": "larapress/larapress",
-    "description": "The LaraPress framework. A framework for WordPress developers.",
+    "name": "portonefive/larapress",
+    "description": "The LaraPress framework. A Laravel-based framework for WordPress developers.",
     "keywords": [
         "larapress",
         "framework",
+        "laravel",
         "WordPress"
     ],
     "license": "GPL-2.0+",
     "authors": [
         {
-            "name": "Julien Lambé",
-            "email": "julien@larapress.com",
-            "homepage": "http://www.larapress.com/"
+            "name": "Jeff Berry",
+            "email": "jeff@portonefive.com",
+            "homepage": "http://portonefive.com.com"
         }
     ],
     "type": "project",
@@ -19,18 +20,6 @@
         {
             "type": "composer",
             "url": "http://wpackagist.org"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/portonefive/larapress"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/portonefive/theme"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/portonefive/framework"
         }
     ],
     "config": {
@@ -41,10 +30,7 @@
         "php": ">=5.4",
         "raveren/kint": "0.9.*",
         "johnpbloch/wordpress": ">=4.1",
-        "larapress/framework": "dev-master",
-        "larapress/theme": "dev-master",
-        "illuminate/html": "5.*",
-        "laravel/framework": "5.1.*@dev"
+        "portonefive/larapress-framework": "dev-master"
     },
     "extra": {
         "installer-paths": {

@@ -1,200 +1,58 @@
-<?php defined('DS') or die('No direct script access.');
+<?php
 
-/**
- * Bootstrap LaraPress framework.
- */
+defined('LARAPRESS_THEME_TEXTDOMAIN') ?: define('LARAPRESS_THEME_TEXTDOMAIN', 'larapress-theme');
 
-require_once(ABSPATH . 'wp-settings.php');
+/*
+|--------------------------------------------------------------------------
+| Create The Application
+|--------------------------------------------------------------------------
+|
+| The first thing we will do is create a new Laravel application instance
+| which serves as the "glue" for all the components of Laravel, and is
+| the IoC container for the system binding all of the various parts.
+|
+*/
 
-/**
- * Define all framework paths
- * These are real paths, not URLs to the framework files.
- * These paths are extensible with the help of WordPress
- * filters.
- */
-// Framework paths.
-$paths = apply_filters('larapress_framework_paths', array());
+$app = new LaraPress\Foundation\Application(
+    realpath(__DIR__ . '/..')
+);
 
-// Plugin base path.
-$paths['plugin'] = __DIR__ . DS;
+/*
+|--------------------------------------------------------------------------
+| Bind Important Interfaces
+|--------------------------------------------------------------------------
+|
+| Next, we need to bind some important interfaces into the container so
+| we will be able to resolve them when needed. The kernels serve the
+| incoming requests to this application from both the web and CLI.
+|
+*/
 
-// Framework base path.
-$paths['sys'] = dirname(__DIR__) . '/vendor/larapress/framework/src';
-
-// Register globally the paths
-foreach ($paths as $name => $path)
-{
-    if ( ! isset($GLOBALS['larapress_paths'][$name]))
-    {
-        $GLOBALS['larapress_paths'][$name] = realpath($path) . DS;
-    }
-}
-
-/*----------------------------------------------------*/
-// Set the application instance.
-/*----------------------------------------------------*/
-$app = new \LaraPress\Core\Application();
-
-
-$composer->addPsr4('App\\', get_template_directory() . '/app');
-
-/*----------------------------------------------------*/
-// Set the application paths.
-/*----------------------------------------------------*/
-$paths = apply_filters(
-    'larapress_application_paths',
-    array(
-        'plugin' => dirname(__DIR__),
-        'sys'    => dirname(__DIR__) . '/vendor/larapress/src'
-    )
+$app->singleton(
+    'Illuminate\Contracts\Http\Kernel',
+    'App\Http\Kernel'
 );
 
 
-$app->bindInstallPaths($paths);
-
-/*----------------------------------------------------*/
-// Bind the application in the container.
-/*----------------------------------------------------*/
-$app->instance('app', $app);
-
-/*----------------------------------------------------*/
-// Load the facades.
-/*----------------------------------------------------*/
-LaraPress\Facades\Facade::clearResolvedInstances();
-
-LaraPress\Facades\Facade::setFacadeApplication($app);
-
-/*----------------------------------------------------*/
-// Register Facade Aliases To Full Classes
-/*----------------------------------------------------*/
-$app->registerCoreContainerAliases();
-
-/*----------------------------------------------------*/
-// Register Core Igniter services
-/*----------------------------------------------------*/
-$app->registerServiceProviders();
-
-/*----------------------------------------------------*/
-// Set application configurations.
-/*----------------------------------------------------*/
-do_action('larapress_configurations');
-
-/*----------------------------------------------------*/
-// Register framework view paths.
-/*----------------------------------------------------*/
-add_filter(
-    'larapressViewPaths',
-    function ($paths)
-    {
-        $paths[] = larapress_path('sys') . 'Metabox/Views/';
-        $paths[] = larapress_path('sys') . 'Page/Views/';
-        $paths[] = larapress_path('sys') . 'Field/Fields/Views/';
-        $paths[] = larapress_path('sys') . 'Route/Views/';
-
-        return $paths;
-    }
+$app->singleton(
+    'Illuminate\Contracts\Console\Kernel',
+    'App\Console\Kernel'
 );
 
-/*----------------------------------------------------*/
-// Register framework asset paths.
-/*----------------------------------------------------*/
-add_filter(
-    'larapressAssetPaths',
-    function ($paths)
-    {
-
-        $coreUrl         = larapress_plugin_url(dirname(__DIR__)) . '/src/LaraPress/_assets';
-        $paths[$coreUrl] = larapress_path('sys') . '_assets';
-
-        return $paths;
-    }
+$app->singleton(
+    'Illuminate\Contracts\Debug\ExceptionHandler',
+    'App\Exceptions\Handler'
 );
 
-/*----------------------------------------------------*/
-// Register framework media image size.
-/*----------------------------------------------------*/
-add_image_size('_larapress_media', 100, 100, true);
-
-add_filter(
-    'image_size_names_choose',
-    function ($sizes)
-    {
-
-        $sizes['_larapress_media'] = __('LaraPress Media Thumbnail', LARAPRESS_FRAMEWORK_TEXTDOMAIN);
-
-        return $sizes;
-    }
-);
-
-/*----------------------------------------------------*/
-// Allow developers to add parameters to
-// the admin global JS object.
-/*----------------------------------------------------*/
-add_action(
-    'admin_head',
-    function ()
-    {
-        $datas = apply_filters('larapressAdminGlobalObject', array());
-
-        $output = "<script type=\"text/javascript\">\n\r";
-        $output .= "//<![CDATA[\n\r";
-        $output .= "var thfmk_larapress = {\n\r";
-
-        if ( ! empty($datas))
-        {
-            foreach ($datas as $key => $value)
-            {
-                $output .= $key . ": " . json_encode($value) . ",\n\r";
-            }
-        }
-
-        $output .= "};\n\r";
-        $output .= "//]]>\n\r";
-        $output .= "</script>";
-
-        // Output the datas.
-        echo($output);
-    }
-);
-
-/*----------------------------------------------------*/
-// Register framework core assets URL to
-// admin global object.
-/*----------------------------------------------------*/
-add_filter(
-    'larapressAdminGlobalObject',
-    function ($paths)
-    {
-        $paths['_larapressAssets'] = larapress_plugin_url(dirname(__DIR__)) . '/src/LaraPress/_assets';
-
-        return $paths;
-    }
-);
-
-/*----------------------------------------------------*/
-// Enqueue frameworks assets.
-/*----------------------------------------------------*/
-// LaraPress styles
-LaraPress\Facades\Asset::add('larapress-core-styles', 'css/_larapress-core.css')->to('admin');
-
-// LaraPress scripts
-LaraPress\Facades\Asset::add(
-    'larapress-core-scripts',
-    'js/_larapress-core.js',
-    array(
-        'jquery',
-        'jquery-ui-sortable',
-        'underscore',
-        'backbone',
-        'mce-view'
-    ),
-    false,
-    true
-)->to('admin');
-
-/*----------------------------------------------------*/
-// Bootstrap application.
-/*----------------------------------------------------*/
-do_action('larapress_bootstrap');
+/*
+|--------------------------------------------------------------------------
+| Return The Application
+|--------------------------------------------------------------------------
+|
+| This script returns the application instance. The instance is given to
+| the calling script so we can separate the building of the instances
+| from the actual running of the application and sending responses.
+|
+*/
 
 return $app;

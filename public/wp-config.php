@@ -5,10 +5,13 @@
 /*----------------------------------------------------*/
 defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
 
-/*----------------------------------------------------*/
-// Bootstrap WordPress
-/*----------------------------------------------------*/
-require_once(__DIR__ . '/../bootstrap/autoload.php');
+define('ABSPATH', __DIR__ . '/cms/');
+
+define('LARAPRESS_TEXTDOMAIN', 'larapress');
+
+require __DIR__ . '/../bootstrap/autoload.php';
+
+Dotenv::load(dirname(__DIR__));
 
 /*----------------------------------------------------*/
 // Database
@@ -39,9 +42,9 @@ define('LARAPRESS_ERROR_REPORT', env('ERROR_REPORT', 0));
 /*----------------------------------------------------*/
 // Content directory
 /*----------------------------------------------------*/
-define('CONTENT_DIR', 'content');
-define('WP_CONTENT_DIR', $webRootPath . DS . CONTENT_DIR);
-define('WP_CONTENT_URL', WP_HOME . '/' . CONTENT_DIR);
+//define('CONTENT_DIR', 'content');
+define('WP_CONTENT_DIR', __DIR__ . '/content');
+define('WP_CONTENT_URL', WP_HOME . '/content');
 
 /*----------------------------------------------------*/
 // Authentication unique keys and salts
@@ -64,7 +67,16 @@ define('NONCE_SALT',       'put your unique phrase here');
 define('WP_AUTO_UPDATE_CORE', false);
 define('DISALLOW_FILE_EDIT', true);
 
-/*----------------------------------------------------*/
-// Sets up WordPress vars and included files
-/*----------------------------------------------------*/
-$larapress = require_once __DIR__ . '/../bootstrap/app.php';
+/*
+|--------------------------------------------------------------------------
+| Turn On The Lights
+|--------------------------------------------------------------------------
+|
+| We need to illuminate PHP development, so let's turn on the lights.
+| This bootstraps the framework and gets it ready for use, then it
+| will load up this application so that we can run it and send
+| the responses back to the browser and delight these users.
+|
+*/
+
+require_once(ABSPATH . 'wp-settings.php');
