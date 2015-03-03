@@ -1,48 +1,50 @@
-<html>
-	<head>
-		<title>Laravel</title>
-		
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+@extends('app')
 
-		<style>
-			body {
-				margin: 0;
-				padding: 0;
-				width: 100%;
-				height: 100%;
-				color: #B0BEC5;
-				display: table;
-				font-weight: 100;
-				font-family: 'Lato';
-			}
+@section('content')
 
-			.container {
-				text-align: center;
-				display: table-cell;
-				vertical-align: middle;
-			}
+    <section id="why-larapress">
 
-			.content {
-				text-align: center;
-				display: inline-block;
-			}
+        <h1 class="text-center">Why LaraPress?</h1>
 
-			.title {
-				font-size: 96px;
-				margin-bottom: 40px;
-			}
+        <ol class="row">
+            <li class="columns small-12 large-4">
+                <div class="panel radius">
+                    <i class="foundicon-monitor large"></i>
+                    <h4>Powerful</h4>
+                    <p>Curabitur pulvinar quis magna sed pharetra nibh finibus turpis.</p>
+                    <a href="#">See it in action</a>
+                </div>
+            </li>
+            <li class="columns small-12 large-4">
+                <div class="panel radius">
+                    <i class="foundicon-tools large"></i>
+                    <h4>Elegant</h4>
+                    <p>Sed bibendum, felis accumsan scelerisque tincidunt, tellus nibh.</p>
+                    <a href="#">Learn more</a>
+                </div>
+            </li>
+            <li class="columns small-12 large-4">
+                <div class="panel radius">
+                    <i class="foundicon-trash large"></i>
+                    <h4>Simple</h4>
+                    <p>Nulla volutpat rutrum enim, ut efficitur ipsum lobortis nec nisi.</p>
+                    <a href="#">See how it works</a>
+                </div>
+            </li>
+        </ol>
 
-			.quote {
-				font-size: 24px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="container">
-			<div class="content">
-				<div class="title">Laravel 5</div>
-				<div class="quote">{{ Inspiring::quote() }}</div>
-			</div>
-		</div>
-	</body>
-</html>
+    </section>
+
+    <section id="preview">
+        <div class="preview-tabs">
+            <ol class="">
+                @foreach (\App\Feature::all() as $i => $feature)
+                    <li class="{{ $i == 0 ? 'active' : '' }}"><a href="{{ $feature->permalink }}">{{ $feature->post_title }}</a></li>
+                @endforeach
+            </ol>
+        </div>
+        test
+    </section>
+
+
+@endsection

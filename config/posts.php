@@ -3,6 +3,7 @@
 return [
     'types' => [
         'App\Page',
-        'App\Post'
+        'App\Post',
+        'App\Feature'
     ]
 ];

@@ -3,3 +3,4 @@ vendor/*
 *.DS_Store
 css/.gitkeep
 !css/.gitkeep
+npm-debug.log
