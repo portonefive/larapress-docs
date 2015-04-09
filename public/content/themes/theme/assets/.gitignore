@@ -1,6 +1,0 @@
-vendor/*
-/.sass-cache/*
-*.DS_Store
-css/.gitkeep
-!css/.gitkeep
-npm-debug.log
