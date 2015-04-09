@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use LaraPress\Contracts\Repository as RepositoryContract;
+use LaraPress\Contracts\Posts\Repository as PostRepositoryContract;
 
-abstract class Repository implements RepositoryContract {
+abstract class Repository implements PostRepositoryContract {
 
     /** @var Model */
     protected $model;
@@ -23,7 +23,7 @@ abstract class Repository implements RepositoryContract {
      */
     public function findById($id)
     {
-        return $this->model->where('ID', $id)->get()->first();
+        return $this->newQuery()->where('ID', $id)->get()->first();
     }
 
     /**
@@ -33,7 +33,7 @@ abstract class Repository implements RepositoryContract {
      */
     public function findByName($name)
     {
-        return $this->model->where('post_name', $name)->get()->first();
+        return $this->newQuery()->where('post_name', $name)->get()->first();
     }
 
     /**
@@ -42,5 +42,13 @@ abstract class Repository implements RepositoryContract {
     public function all()
     {
         return $this->model->all();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    protected function newQuery()
+    {
+        return $this->model->newQuery();
     }
 }

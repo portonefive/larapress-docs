@@ -4,9 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
-
-	<link href="{{ get_template_directory_uri() }}/assets/css/style.css" rel="stylesheet">
+	<title>{{ wp_title('|', false, 'right') }}</title>
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -19,9 +17,10 @@
 	<![endif]-->
 
     <?php wp_head(); ?>
-
+    
+    {!! HTML::style(larapress_assets('css/style.css')) !!}
 </head>
-<body>
+<body <?php body_class(!empty($page) ? $page->slug : '') ?>>
 
     <header id="header" class="row">
         <div class="columns small-12 large-6">
@@ -48,11 +47,11 @@
 
 	<!-- Scripts -->
 
-	<script src="{{ get_template_directory_uri() }}/assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="{{ get_template_directory_uri() }}/assets/vendor/jquery/dist/jquery.min.map"></script>
-    <script src="{{ get_template_directory_uri() }}/assets/js/app.js"></script>
+       {!! HTML::script(larapress_assets('vendor/jquery/dist/jquery.min.js')) !!}
+       {!! HTML::script(larapress_assets('vendor/foundation/js/foundation.js')) !!}
+       {!! HTML::script(larapress_assets('js/app.js')) !!}
+       
+	<?php wp_footer(); ?>
+
 </body>
-
-<?php wp_footer(); ?>
-
 </html>

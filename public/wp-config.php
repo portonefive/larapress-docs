@@ -1,10 +1,5 @@
 <?php
 
-/*----------------------------------------------------*/
-// Directory separator
-/*----------------------------------------------------*/
-defined('DS') ? DS : define('DS', DIRECTORY_SEPARATOR);
-
 define('ABSPATH', __DIR__ . '/cms/');
 
 define('LARAPRESS_TEXTDOMAIN', 'larapress');
@@ -13,9 +8,11 @@ require __DIR__ . '/../bootstrap/autoload.php';
 
 Dotenv::load(dirname(__DIR__));
 
-/*----------------------------------------------------*/
-// Database
-/*----------------------------------------------------*/
+/*
+|--------------------------------------------------------------------------
+| Database
+|--------------------------------------------------------------------------
+*/
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
@@ -27,28 +24,26 @@ define('DB_TABLE_PREFIX', $table_prefix = env('DB_TABLE_PREFIX', 'wp_'));
 
 // WordPress URLs
 define('WP_HOME', env('WP_HOME'));
-define('WP_SITEURL', env('WP_HOME') . '/cms');
+define('WP_SITEURL', WP_HOME . '/cms');
 
 // Development
 define('SAVEQUERIES', env('SAVE_QUERIES', false));
 define('WP_DEBUG', env('DEBUG', false));
 define('SCRIPT_DEBUG', env('SCRIPT_DEBUG', false));
 
-// LaraPress framework
-define('LARAPRESS_ERROR_DISPLAY', env('ERROR_DISPLAY', false));
-define('LARAPRESS_ERROR_SHUTDOWN', env('ERROR_SHUTDOWN', false));
-define('LARAPRESS_ERROR_REPORT', env('ERROR_REPORT', 0));
-
-/*----------------------------------------------------*/
-// Content directory
-/*----------------------------------------------------*/
-//define('CONTENT_DIR', 'content');
+/*
+|--------------------------------------------------------------------------
+| Content Directory
+|--------------------------------------------------------------------------
+*/
 define('WP_CONTENT_DIR', __DIR__ . '/content');
 define('WP_CONTENT_URL', WP_HOME . '/content');
 
-/*----------------------------------------------------*/
-// Authentication unique keys and salts
-/*----------------------------------------------------*/
+/*
+|--------------------------------------------------------------------------
+| Authentication unique keys and salts
+|--------------------------------------------------------------------------
+*/
 /**
  * @link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service
  */
@@ -61,11 +56,15 @@ define('SECURE_AUTH_SALT', 'put your unique phrase here');
 define('LOGGED_IN_SALT',   'put your unique phrase here');
 define('NONCE_SALT',       'put your unique phrase here');
 
-/*----------------------------------------------------*/
-// Custom settings
-/*----------------------------------------------------*/
+/*
+|--------------------------------------------------------------------------
+| Custom settings
+|--------------------------------------------------------------------------
+*/
 define('WP_AUTO_UPDATE_CORE', false);
 define('DISALLOW_FILE_EDIT', true);
+
+define('WP_DEFAULT_THEME', 'LaraPress');
 
 /*
 |--------------------------------------------------------------------------

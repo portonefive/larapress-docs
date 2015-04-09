@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug'           => env('APP_DEBUG'),
+    'debug'           => env('DEBUG'),
     /*
     |--------------------------------------------------------------------------
     | Application URL
@@ -110,7 +110,6 @@ return [
         'Illuminate\Bus\BusServiceProvider',
         'Illuminate\Cache\CacheServiceProvider',
         'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
-        'LaraPress\Routing\ControllerServiceProvider',
         'Illuminate\Cookie\CookieServiceProvider',
         'Illuminate\Database\DatabaseServiceProvider',
         'Illuminate\Encryption\EncryptionServiceProvider',
@@ -129,17 +128,20 @@ return [
         /*
          * LaraPress Framework Service Providers
          */
+        'LaraPress\Mail\MailServiceProvider',
+        'LaraPress\Routing\ControllerServiceProvider',
         'LaraPress\Foundation\Providers\SupportServiceProvider',
         'LaraPress\Auth\WordPressAuthServiceProvider',
         'LaraPress\Hashing\HashServiceProvider',
-        'LaraPress\View\ViewServiceProvider',
         'LaraPress\Posts\PostServiceProvider',
         'LaraPress\Html\HtmlServiceProvider',
         'LaraPress\Taxonomy\TaxonomyServiceProvider',
         'LaraPress\Assets\AssetServiceProvider',
+        'LaraPress\MetaBox\MetaBoxServiceProvider',
         /*
          * Application Service Providers...
          */
+        'App\Providers\ViewServiceProvider',
         'App\Providers\AppServiceProvider',
         'App\Providers\BusServiceProvider',
         'App\Providers\ConfigServiceProvider',
@@ -147,9 +149,9 @@ return [
         'App\Providers\RouteServiceProvider',
         'App\Providers\MenuServiceProvider',
         'App\Providers\SidebarServiceProvider',
-        'App\Providers\TemplateServiceProvider',
         'App\Providers\WidgetServiceProvider',
         'App\Providers\AdminPageServiceProvider',
+        'App\Providers\TemplateAndSidebarServiceProvider',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -197,7 +199,7 @@ return [
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
         'Form'      => 'Illuminate\Html\FormFacade',
-        'Html'      => 'Illuminate\Html\HtmlFacade',
+        'HTML'      => 'Illuminate\Html\HtmlFacade',
         /* LaraPress Facades */
         'Action'    => 'LaraPress\Support\Facades\Action',
         'Filter'    => 'LaraPress\Support\Facades\Filter',

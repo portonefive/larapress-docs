@@ -29,7 +29,7 @@
     "require": {
         "php": ">=5.4",
         "raveren/kint": "0.9.*",
-        "johnpbloch/wordpress": ">=4.1",
+        "johnpbloch/wordpress": "4.1.*",
         "portonefive/larapress-framework": "dev-master"
     },
     "extra": {

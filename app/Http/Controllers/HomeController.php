@@ -1,9 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Application;
-use LaraPress\Assets\Manager;
-use Loop;
-
 class HomeController extends Controller {
 
     /*
@@ -18,25 +14,12 @@ class HomeController extends Controller {
     */
 
     /**
-     * Create a new controller instance.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
      * Show the application dashboard to the user.
      *
-     * @return Response
+     * @return \Illuminate\Http\Response
      */
-    public function index(Application $app)
+    public function index()
     {
-
         return view('home');
-    }
-
-    public function contact()
-    {
     }
 }

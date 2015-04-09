@@ -13,11 +13,15 @@
 
 /** @var LaraPress\Routing\Router $router */
 
-$router->page('contact', 'HomeController@contact');
+$router->get('/', 'HomeController@index');
 
-$router->get('/', 'WelcomeController@index');
-
-$router->get('home', 'HomeController@index');
+$router->get(
+    'wp-admin',
+    function ()
+    {
+        return redirect()->to('cms/wp-admin');
+    }
+);
 
 $router->controllers(
     [
@@ -25,13 +29,3 @@ $router->controllers(
         'password' => 'Auth\PasswordController',
     ]
 );
-
-$router->get('team/{id}/test', 'WelcomeController@index');
-
-//Route::page(['team', 'staff'], 'PageController@team');
-
-//$router->admin('example-page', 'Admin\ExamplePageController@render');
-
-$router->admin('example-page', ['menuTitle' => 'Foo', 'pageTitle' => 'LALA', 'uses' => 'Admin\ExamplePageController@render']);
-
-$router->admin('example-page/test', 'Admin\ExamplePageController@test');

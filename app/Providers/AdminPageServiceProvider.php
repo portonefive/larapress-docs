@@ -4,7 +4,5 @@ use LaraPress\Admin\AdminPageServiceProvider as BaseAdminPageServiceProvider;
 
 class AdminPageServiceProvider extends BaseAdminPageServiceProvider {
 
-    protected $adminControllers = [
-        'App\Http\Controllers\Admin\ExamplePageController'
-    ];
+    protected $adminControllers = [];
 }
