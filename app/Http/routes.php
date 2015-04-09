@@ -15,6 +15,9 @@
 
 $router->get('/', 'HomeController@index');
 
+$router->get('docs/{version}', 'DocsController@index');
+$router->get('docs/{version}/{component}', 'DocsController@show');
+
 $router->get(
     'wp-admin',
     function ()
