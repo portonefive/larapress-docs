@@ -30,7 +30,8 @@
         "php": ">=5.4",
         "raveren/kint": "0.9.*",
         "johnpbloch/wordpress": "4.1.*",
-        "portonefive/larapress-framework": "dev-master"
+        "portonefive/larapress-framework": "dev-master",
+        "michelf/php-markdown": "~1.5"
     },
     "extra": {
         "installer-paths": {

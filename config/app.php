@@ -152,6 +152,7 @@ return [
         'App\Providers\WidgetServiceProvider',
         'App\Providers\AdminPageServiceProvider',
         'App\Providers\TemplateAndSidebarServiceProvider',
+        \App\Providers\DocsServiceProvider::class
     ],
     /*
     |--------------------------------------------------------------------------

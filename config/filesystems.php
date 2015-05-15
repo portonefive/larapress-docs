@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'default' => 'local',
+	'default' => 's3',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -45,10 +45,15 @@ return [
 
 		'local' => [
 			'driver' => 'local',
-			'root'   => storage_path().'/app',
+			'root'   => storage_path('app')
 		],
 
-		's3' => [
+        'larapress-docs' => [
+            'driver' => 'local',
+            'root'   => base_path('resources/docs/larapress')
+        ],
+
+        's3' => [
 			'driver' => 's3',
 			'key'    => 'your-key',
 			'secret' => 'your-secret',

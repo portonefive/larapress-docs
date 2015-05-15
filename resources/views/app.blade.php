@@ -19,6 +19,7 @@
     <?php wp_head(); ?>
     
     {!! HTML::style(larapress_assets('css/style.css')) !!}
+
 </head>
 <body <?php body_class(!empty($page) ? $page->slug : '') ?>>
 

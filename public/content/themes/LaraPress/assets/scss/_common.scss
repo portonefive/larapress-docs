@@ -1,7 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Slabo+27px);
 
-@import "icons";
-
 #why-larapress {
 
 //    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACZJREFUeNpi/PTpEwMY8PLyMsFZnz9/ZoKzgAzG////Q1hAABBgAFeiDto+NxIZAAAAAElFTkSuQmCC");
@@ -158,7 +156,6 @@
                         color: $white;
                         position: relative;
                         bottom: -1px;
-                        @include background-image(linear-gradient(#397989, #40565C, #245D6C));
                         box-shadow: transparentize(#245D6C, .6) 0 0 10px 5px;
                         border-color: #245D6C;
                         margin-top: -1px;

@@ -15,9 +15,11 @@
 
 $router->get('/', 'HomeController@index');
 
+//Docs
 $router->get('docs/{version}', 'DocsController@index');
 $router->get('docs/{version}/{component}', 'DocsController@show');
 
+//Wordpress ADmin
 $router->get(
     'wp-admin',
     function ()

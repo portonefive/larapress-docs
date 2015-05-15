@@ -40,7 +40,8 @@
         "App\\Providers\\SidebarServiceProvider",
         "App\\Providers\\WidgetServiceProvider",
         "App\\Providers\\AdminPageServiceProvider",
-        "App\\Providers\\TemplateAndSidebarServiceProvider"
+        "App\\Providers\\TemplateAndSidebarServiceProvider",
+        "App\\Providers\\DocsServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -70,7 +71,8 @@
         "App\\Providers\\SidebarServiceProvider",
         "App\\Providers\\WidgetServiceProvider",
         "App\\Providers\\AdminPageServiceProvider",
-        "App\\Providers\\TemplateAndSidebarServiceProvider"
+        "App\\Providers\\TemplateAndSidebarServiceProvider",
+        "App\\Providers\\DocsServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
