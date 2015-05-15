@@ -25,8 +25,8 @@ class DocsRepository {
         return $this->fileSystem->get($filePath);
     }
 
-    public function getMenu()
+    public function getMenu($version)
     {
-        return $this->fileSystem->get('menu.md');
+        return $this->fileSystem->get($version . '/_menu.md');
     }
 }

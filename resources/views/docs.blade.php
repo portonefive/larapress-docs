@@ -12,7 +12,7 @@
             </nav>
         </aside>
 
-        <main class="small-12 medium-9 columns docs-content">
+        <main id="docs-content" class="small-12 medium-9 columns">
 
             {!! $docHTML !!}
 
