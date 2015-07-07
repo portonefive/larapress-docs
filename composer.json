@@ -25,11 +25,11 @@
     "config": {
         "preferred-install": "dist"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4",
         "raveren/kint": "0.9.*",
-        "johnpbloch/wordpress": "4.1.*",
+        "johnpbloch/wordpress": "4.*",
         "portonefive/larapress-framework": "dev-master",
         "michelf/php-markdown": "~1.5"
     },

@@ -25,13 +25,15 @@
 
     <header id="header" class="row">
         <div class="columns small-12 large-6">
-            <h1 class="logo"><span class="lara">Lara</span><span class="press">Press</span></h1>
+            <h1 class="logo">
+                <a href="/"><span class="lara">Lara</span><span class="press">Press</span></a>
+            </h1>
         </div>
         <nav class="columns small-12 large-6">
             <ul>
                 <li><a href="#">Learn</a></li>
                 <li><a href="#">Install</a></li>
-                <li><a href="#">Documentation</a></li>
+                <li><a href="/docs/1.0">Documentation</a></li>
             </ul>
         </nav>
     </header>
