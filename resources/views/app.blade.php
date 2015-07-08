@@ -33,14 +33,14 @@
             <ul>
                 <li><a href="#">Learn</a></li>
                 <li><a href="#">Install</a></li>
-                <li><a href="/docs/1.0">Documentation</a></li>
+                <li><a href="/docs/0.1">Documentation</a></li>
             </ul>
         </nav>
     </header>
 
     <div id="callout">
         <h1>Introducing you to easy Wordpress development, that's right we said easy Wordpress development.</h1>
-        <h2>Laravel + Wordpress</h2>
+        <h2>Laravel + Wordpress = LaraPress</h2>
         <a id="intrigued" href="#" class="button radius">Tell me more</a>
     </div>
 

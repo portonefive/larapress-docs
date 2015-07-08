@@ -1,11 +1,9 @@
 body {
-    border-top: 3px solid #2A6D7F;
+    border-top: 3px solid $primary-color;
 }
 
 #header {
-
-    color: $white;
-    margin-top: 20px;
+    padding-top: 20px;
 
     h1 {
 

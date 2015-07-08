@@ -19,15 +19,6 @@ $router->get('/', 'HomeController@index');
 $router->get('docs/{version}', 'DocsController@index');
 $router->get('docs/{version}/{component}', 'DocsController@show');
 
-//Wordpress ADmin
-$router->get(
-    'wp-admin',
-    function ()
-    {
-        return redirect()->to('cms/wp-admin');
-    }
-);
-
 $router->controllers(
     [
         'auth'     => 'Auth\AuthController',

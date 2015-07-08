@@ -1,10 +1,20 @@
 #docs {
 
-  #docs-nav {
-    margin-top: 15px;
-  }
+    #docs-nav {
+        //margin-top: 15px;
 
-  #docs-content {
+        ul {
+            @include side-nav;
+        }
+    }
 
-  }
+    #docs-content {
+
+        pre {
+
+            code {
+
+            }
+        }
+    }
 }
